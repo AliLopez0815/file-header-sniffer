@@ -31,3 +31,10 @@ Trust `Content-Type` from uploads and you will eventually store a `.exe` labelle
 ## Exports
 
 `sniff`, `sniff_bytes`, `MagicNumberError`, `signatures`, `register`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
